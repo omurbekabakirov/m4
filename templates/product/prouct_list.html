@@ -1,0 +1,22 @@
+{% extends 'components/navbar.html' %}
+
+{% block content %}
+<body>
+    <h1>
+        Post list
+    </h1>
+
+    {% for product in products %}
+        <div class="card" style="width: 18rem;">
+            <img src="{{ product.image_of_product }}" class="card-img-top" alt="...">
+            <div class="card-body">
+            <h5 class="card-title">{{ product.name_of_product }} {{ product.rating }}</h5>
+            <p class="card-text">{{ product.created_at }}</p>
+            <a href="#" class="btn btn-primary">View</a>
+            </div>
+        </div>
+    {% endfor %}
+</body>
+</html>
+
+{% endblock %}
