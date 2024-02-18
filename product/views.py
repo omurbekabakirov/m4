@@ -1,6 +1,8 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from datetime import datetime
+
+import product.models
 from product.models import Product
 
 
@@ -29,3 +31,13 @@ def product_list_view(request):
                       "product/product_list.html",
                       context={"products": products})
 
+
+def product_detail_view(request, product_id):
+    if request.method == "GET":
+        product = Product.objects.get(id=product_id)
+        context = {"product": product}
+        return render(
+            request=request,
+            template_name="product/product_detail.html",
+            context=context
+        )

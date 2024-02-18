@@ -1,0 +1,47 @@
+{% extends 'components/navbar.html' %}
+
+{% block content %}
+<body>
+    <h1>
+        Product Detail
+    </h1>
+
+<h1>
+    {{ product.title }} {{ product.rate }}
+</h1>
+<p>
+    {{ product.content }}
+</p>
+<p>
+    {{ product.created_at }}
+</p>
+
+{% for category in product.categories.all %}
+    <a href="#" class="btn btn-secondary">#{{ category.title }}</a>
+{% endfor %}
+
+<div class="container">
+
+    <h1>
+        Review
+    </h1>
+
+    {% for review in product.reviews.all %}
+        <p>
+            {{ review.text }}
+        </p>
+        <p>
+            {{ review.created_at }}
+        </p>
+    {% endfor %}
+
+</div>
+
+<style>
+    .container {
+        margin-top: 20px;
+        background-color:cyan;
+    }
+</style>
+
+{% endblock %}
