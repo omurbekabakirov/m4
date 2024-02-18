@@ -15,7 +15,7 @@
                 {% for category in product.categories.all %}
                     <a href="#" class="btn btn-secondary">#{{ category.title_of_category}}</a>
                 {% endfor %}
-            <a href="/products/{{ post.id }}" class="btn btn-primary">View</a>
+            <a href="/products/{{ product.id }}" class="btn btn-primary">View</a>
             </div>
         </div>
     {% endfor %}
