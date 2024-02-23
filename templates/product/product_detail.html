@@ -1,11 +1,17 @@
 {% extends 'components/navbar.html' %}
 
+{% load static %}
+
 {% block content %}
 <body>
     <h1>
         Product Detail
     </h1>
-
+{% if product.image %}
+    <img src="/media/{{product.image}}">
+{% else %}
+    <img src="{% static 'default_icon.png' %}">
+{% endif %}
 <h1>
     {{ product.name_of_product }} {{ product.rating }}
 </h1>

@@ -2,3 +2,6 @@
 .venv
 db.sqlite3
 .idea
+static_files
+static
+media
