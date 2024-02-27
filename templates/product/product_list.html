@@ -11,7 +11,7 @@
 
     {% for product in products %}
         <div class="card" style="width: 18rem;">
-            {% if product.image %}
+            {% if product.image_of_product %}
                 <img src="media/{{ product.image_of_product }}" class="card-img-top" alt="...">
             {% else %}
                 <img src="{% static 'default_icon.png' %}" class="card-img-top" alt="...">

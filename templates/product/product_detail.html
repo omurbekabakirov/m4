@@ -7,8 +7,8 @@
     <h1>
         Product Detail
     </h1>
-{% if product.image %}
-    <img src="media/{{product.image}}">
+{% if product.image_of_product %}
+    <img src="media/{{product.image_of_product}}">
 {% else %}
     <img src="{% static 'default_icon.png' %}">
 {% endif %}
@@ -42,6 +42,12 @@
     {% endfor %}
 
 </div>
+<form> action="product/{{ product.id}}/create_review/" method="product">
+    {% crsf_token %}
+    {{ form.as_p }}
+    <button> type="submit">Create Category</button>
+</form>
+
 
 <style>
     .container {
