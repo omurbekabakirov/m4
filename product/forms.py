@@ -36,7 +36,7 @@ class ProductForm(forms.Form):
 class ProductForm2(forms.ModelForm):
     class Meta:
         model = Product
-        fields = ['name_of_product', 'description', 'image_of_product','categories']
+        fields = ['name_of_product', 'description', 'image_of_product', 'categories']
 
 
 class ReviewForm(forms.ModelForm):
@@ -49,4 +49,6 @@ class ReviewForm(forms.ModelForm):
 
 
 class CategoryForm(forms.ModelForm):
-    category = forms.CharField(max_length=100)
+    class Meta:
+        model = Category
+        fields = '__all__'

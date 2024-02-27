@@ -26,7 +26,6 @@ from product.views import (
     main_view,
     product_detail_view,
     create_product_view,
-    create_review_view,
     create_category_view
 )
 
@@ -39,7 +38,6 @@ urlpatterns = [
     path('products/', product_list_view),
     path('products/<int:product_id>/', product_detail_view),
     path('products/create/', create_product_view),
-    path('products/<int:product_id>/create_review/'), create_review_view,
-    path('products/ create_category/'), create_category_view
+    path('products/create_category/', create_category_view)
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

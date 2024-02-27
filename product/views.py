@@ -3,7 +3,7 @@ from django.http import HttpResponse
 from datetime import datetime
 from product.forms import ProductForm, ProductForm2, ReviewForm,CategoryForm
 import product.models
-from product.models import Product
+from product.models import Product, Category, Review
 
 
 def hello_view(request):
@@ -43,42 +43,34 @@ def product_detail_view(request, product_id):
         )
 
 
-def create_review_view(request,product_id):
-    if request.method == "POST":
-        form = ReviewForm(request.POST)
-        if not form.is_valid():
-           return render(request=request, template_name="product/product_detail.html", context={"form": form})
-        review = form.save(commit=False)
-        review.product_id = product_id
-        review.save()
-        return redirect(f"/product/{product_id}/")
-
-
 def create_product_view(request):
-    if request.method == "GET":
+    if request.method == 'GET':
+        context = {
+            "form": ProductForm2()
+        }
+        return render(request, 'product/create_product.html', context)
+    elif request.method == 'POST':
         form = ProductForm2(request.POST, request.FILES)
-        return render(
-            request=request,
-            template_name="product/create_product.html",
-            context={"form": form}
-        )
-    elif request.method == "POST":
-        form = ProductForm2(request.POST, request.FILES)
-
         if not form.is_valid():
-            return render(
-                request=request, template_name="product/create_product.html",context={"form":form}
-            )
+            context = {
+            "form": form
+            }
+            return render(request, 'product/create_product.html', context)
         form.save()
-        return redirect("/product/")
+        return redirect("/products/")
 
 
 def create_category_view(request):
-    if request.method == "POST":
+    if request.method == 'GET':
+        context = {
+            "form": CategoryForm(),
+        }
+        return render(request, 'product/create_category.html', context=context)
+    elif request.method == 'POST':
         form = CategoryForm(request.POST)
         if not form.is_valid():
-            return render(
-                request=request, template_name="product/create_product.html",context={"form":form}
-            )
-        form.save()
-        return redirect("/product/")
+            context = {
+                "form": form
+            }
+            return render(request, 'product/create_category.html', context=context)
+    return redirect('/products/')
