@@ -8,7 +8,7 @@
         Product Detail
     </h1>
 {% if product.image_of_product %}
-    <img src="media/{{product.image_of_product}}">
+    <img src="/media/{{product.image_of_product}}">
 {% else %}
     <img src="{% static 'default_icon.png' %}">
 {% endif %}

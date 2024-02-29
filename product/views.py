@@ -21,7 +21,7 @@ def current_date_view(request):
 
 
 def goodbye_view(request):
-    return HttpResponse("Goodbye user !")
+    return HttpResponse("Goodbye users !")
 
 
 def product_list_view(request):
@@ -53,9 +53,10 @@ def create_product_view(request):
         form = ProductForm2(request.POST, request.FILES)
         if not form.is_valid():
             context = {
-            "form": form
+                "form": form
             }
             return render(request, 'product/create_product.html', context)
+
         form.save()
         return redirect("/products/")
 

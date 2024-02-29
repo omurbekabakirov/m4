@@ -28,16 +28,31 @@ from product.views import (
     create_product_view,
     create_category_view
 )
+from users.views import (
+    register_view,
+    login_view,
+    profile_view,
+    logout_view,
+    confirm_view
+
+)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', main_view),
+    path('', main_view,name='main_view'),
     path('hello/', hello_view),
     path('current_date/', current_date_view),
     path('goodbye/', goodbye_view),
     path('products/', product_list_view),
     path('products/<int:product_id>/', product_detail_view),
     path('products/create/', create_product_view),
-    path('products/create_category/', create_category_view)
+    path('products/create_category/', create_category_view),
+
+    path('register/', register_view),
+    path('login/', login_view),
+    path('profile/', profile_view),
+    path('logout/', logout_view),
+    path('comfirm/', confirm_view)
+
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
