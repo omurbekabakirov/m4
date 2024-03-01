@@ -4,6 +4,7 @@ from datetime import datetime
 from product.forms import ProductForm, ProductForm2, ReviewForm,CategoryForm
 import product.models
 from product.models import Product, Category, Review
+from django.contrib.auth.decorators import login_required
 
 
 def hello_view(request):
@@ -26,7 +27,7 @@ def goodbye_view(request):
 
 def product_list_view(request):
     if request.method == "GET":
-        products = Product.objects.all()
+        products = Product.objects.exclude(user=request.user).all()
         return render(request,
                       "product/product_list.html",
                       context={"products": products})

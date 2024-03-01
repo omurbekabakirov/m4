@@ -39,7 +39,7 @@ from users.views import (
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', main_view,name='main_view'),
+    path('', main_view, name='main_view'),
     path('hello/', hello_view),
     path('current_date/', current_date_view),
     path('goodbye/', goodbye_view),
@@ -49,10 +49,10 @@ urlpatterns = [
     path('products/create_category/', create_category_view),
 
     path('register/', register_view),
-    path('login/', login_view),
-    path('profile/', profile_view),
+    path('login/', login_view, name='login'),
+    path('profile/', profile_view, ),
     path('logout/', logout_view),
-    path('comfirm/', confirm_view)
+    path('confirm/<str:code>/', confirm_view, name='confirm')
 
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

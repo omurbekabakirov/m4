@@ -28,3 +28,7 @@ class LoginForm(forms.Form):
 
 class SMSCodeForm(forms.Form):
     code = forms.CharField(max_length=4)
+
+
+class ConfirmForm(forms.Form):
+    code = forms.CharField(max_length=6, required=True)
