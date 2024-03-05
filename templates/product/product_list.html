@@ -2,9 +2,22 @@
 
 {% load static %}
 
-
 {% block content %}
 <body>
+    <form action='' method="get">
+        <input type="text" name="search" placeholder="Search" value="{{ request.GET.search }}">
+        <input type="submit" value="Search">
+    </form>
+    {% for category in categories %}
+        <a href="?category={{category.id}}" class="btn btn-secondary">#{{ category.title_of_category }}</a>
+    {% endfor %}
+    <h2>
+        Sort by
+    </h2>
+    <a href="?sort=created_at" class="btn btn-secondary">Newest</a>
+    <a href="?sort=created_at&order=desc" class="btn btn-secondary">Oldest</a>
+    <a href="?sort=rating" class="btn btn-secondary">Rate(asc)</a>
+    <a href="?sort=rating&order=desc" class="btn btn-secondary">Rate(desc)</a>
     <h1>
         Post list
     </h1>
@@ -26,6 +39,14 @@
             </div>
         </div>
     {% endfor %}
+
+<h1>
+    Pages
+</h1>
+    {% for page in pages %}
+        <a href="?page={{page}}" class="btn btn-secondary" >{{page}}</a>
+    {% endfor %}
+
 </body>
 </html>
 

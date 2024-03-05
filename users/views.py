@@ -28,7 +28,7 @@ def register_view(request):
                 password=password,
                 first_name=first_name,
                 last_name=last_name,
-                is_active=False
+                is_active=False,
             )
             Profile.objects.create(
                 user=user,
@@ -40,7 +40,7 @@ def register_view(request):
                 user=user,
                 code=code
             )
-            return redirect('comfirm', code=code)
+            return redirect('confirm', code=code)
         else:
             return render(request, 'user/register.html', {"form": form})
 
